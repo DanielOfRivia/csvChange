@@ -1,16 +1,24 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+import csv
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def read_file(file_name):
+    with open(file_name) as csv_file:
+        reader = csv.reader(csv_file, delimiter=',')
+        next(reader)
+        names = []
+        dates = []
+        for table in reader:
+            names.append(table[0])
+            dates.append(table[1])
+            print(table)
+        names_set = set(names)
+        dates_set = set(dates)
+
+    # with open('result.csv', 'w', newline='') as new_file:
+    #     writer = csv.writer(new_file)
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+# def change_date(date_text):
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+read_file('addresses.csv')
